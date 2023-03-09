@@ -1,0 +1,13 @@
+.loader {
+  @apply w-32 h-32 border-dashed border-green-400 rounded-[50%] border-4 flex justify-center items-center;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

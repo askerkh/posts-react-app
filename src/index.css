@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.modalBg {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.post-enter {
+  transform: translateX(-350px);
+}
+.post-enter-active {
+  transform: translateX(0px);
+  transition: all 500ms ease-in;
+}
+.post-exit {
+  opacity: 1;
+}
+.post-exit-active {
+  transform: translateX(-350px);
+  transition: all 500ms ease-in;
+}
+
