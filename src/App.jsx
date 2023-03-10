@@ -1,18 +1,34 @@
-import { Route, Routes } from "react-router-dom"
-import Posts from "./pages/Posts"
-import About from "./pages/About"
-import Header from "./Components/UI/Header"
+import AppRouter from "./Components/AppRouter";
+import { useState, useEffect } from "react";
+import { AuthContext } from "./context";
 
 const App = () => {
-  return (
-    <div className="max-w-7xl realtive w-full min-h-screen flex flex-col">
-      <Header />
-      <Routes>
-        <Route path="/posts" element={<Posts />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </div>
-  )
-}
+  const [isAuth, setIsAuth] = useState(false);
+  const [burgerOpened, setBurgerOpened] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-export default App
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setIsAuth(true);
+    }
+    setIsLoading(false);
+  }, []);
+
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuth,
+        setIsAuth,
+        isLoading,
+        burgerOpened,
+        setBurgerOpened,
+      }}
+    >
+      <div className="flex min-h-screen w-full max-w-7xl flex-col">
+        <AppRouter />
+      </div>
+    </AuthContext.Provider>
+  );
+};
+
+export default App;
